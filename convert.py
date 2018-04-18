@@ -9,7 +9,7 @@ print(r.beta_code(test))
 
 '''
 for line in open('homer_odyssey/hom_od_01.txt'):
-    test = r'r\"\"\"' + line + r'\"\"\"'
+    test = r""" + line + """
     r = Replacer()
     print(r.beta_code(test))
 '''
