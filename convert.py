@@ -10,8 +10,10 @@ zipped = zip(beta_files, text_files)
 
 def clean_punc(text):
 
-    punc = [r'&ldquo;', r'&rdquo;', r'&mdash;']
-    uni = ['"', '"', '-']
+    punc = [r'&ldquo;', r'&rdquo;', r'&mdash;', r'&lsquo;', r'&rsquo;',
+        r'&lsqb;', r'&rsqb;', r'&middot;', r'&iuml;', r'&euml;',
+        r'&ouml;', r'&uuml;']
+    uni = ['"', '"', '-', "'", "'", "[", "]", " · ", "ï", "ë", "ö", "ü"]
     combo = zip(punc,uni)
 
     for pair in combo:
