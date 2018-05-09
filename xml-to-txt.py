@@ -57,6 +57,7 @@ for file in txt_files:
 	#close file
 	infile.close()
 
+#test for remaining &...; characters
 for file in txt_files:
 
 	infile = open('latin/ovid_fasti/' + file)
