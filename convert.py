@@ -4,9 +4,9 @@ from os import listdir
 
 r = Replacer()
 
-beta_files = sorted(listdir('homer_iliad/betacode_files'))
-text_files = [f for f in sorted(listdir('homer_iliad')) if f.endswith('txt')]
-zipped = zip(beta_files, text_files)
+#beta_files = sorted(listdir('homer_iliad/betacode_files'))
+#text_files = [f for f in sorted(listdir('homer_iliad')) if f.endswith('txt')]
+#zipped = zip(beta_files, text_files)
 
 def clean_punc(text):
 
@@ -43,5 +43,5 @@ def convert_to_unicode(beta,text):
 
     return full_text
 
-for pair in zipped:
-    convert_to_unicode('homer_iliad/betacode_files/' + pair[0], 'homer_iliad/' + pair[1])
+#for pair in zipped:
+    #convert_to_unicode('homer_iliad/betacode_files/' + pair[0], 'homer_iliad/' + pair[1])
