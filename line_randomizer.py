@@ -10,9 +10,7 @@ for file in sorted(listdir('latin/ovid_metamorphoses')):
 
     whole_met.extend(raw.split('\n'))
 
-    for l in whole_met:
-        if not l:
-            whole_met.remove(l)
+clean_whole_met = list(filter(lambda a: a not '', whole_met))
 
 #test if there are any empty lines
 def test_for_empty(list):
