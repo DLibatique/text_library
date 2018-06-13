@@ -17,25 +17,44 @@ if root.xpath("//div1[@type='Book']"):
 elif root.xpath("//div1[@type='book']"):
 	zipped = list(zip(txt_files, root.xpath("//div1[@type='book']")))
 
+# lines = root.findall('.//lb')
+# print(lines[0].tail)
+
+# print([l.tail for l in list(zipped[0][1].iter('lb'))])
+
+print(zipped[0][1].iter('lb') == True)
+
+def node_text(node):
+    if node.text:
+        result = node.text
+    else:
+        result = ''
+    for child in node:
+        if child.tail is not None:
+            result += child.tail
+    return result
+
 def write_to_txt(dir, pair):
 
 	#open text file
 	file = open(dir + '/' + pair[0],'w')
 
 	#write lines associated with proper book to text file
-	if pair[1].iter('l'):
-		for l in pair[1].iter('l'):
-			file.write(''.join(l.itertext()) + "\n")
-	elif pair[1].iter('lb'):
-		for l in pair[1].iter('lb'):
-			file.write(''.join(lb.itertext()) + "\n")
+	# if pair[1].iter('l'):
+	# 	for l in pair[1].iter('l'):
+	# 		file.write(''.join(l.itertext()) + "\n")
+
+	for l in list(pair[1].iter('lb')):
+		if l.tail is not None:
+			file.write(str(l.tail))
+		#look to Pat's notebook to skip intervening elements
 
 	#close file
 	file.close()
 
 #write appropriate lines of each book to each text file
 for x in zipped:
-	write_to_txt('latin/ovid_fasti',x)
+	write_l_to_txt('latin/ovid_fasti',x)
 
 #convert HTML characters into unicode
 for file in txt_files:
