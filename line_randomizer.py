@@ -1,5 +1,5 @@
 import random
-from os import listdir
+import os
 from cltk.tokenize.line import LineTokenizer
 
 #initialize tokenizer
@@ -8,15 +8,23 @@ tokenizer = LineTokenizer('latin')
 #create list of lines
 whole_met = []
 
+list_of_files = [file for file in listdir('la') if os.path.isfile(os.path.join('la/',file))]
+print(list_of_files)
+
+'''
 #iterate through files/books of Metamorphoses
-for file in sorted(listdir('latin/ovid_metamorphoses')):
+for file in [file for file in listdir('la') if os.path.isfile(os.path.join('la/',file))]:
 
-    #get text from each file
-    with open('latin/ovid_metamorphoses/' + file) as f:
-        raw = f.read()
+    if file.startswith('ovid'):
 
-    #add line-tokenized text to the master list of lines
-    whole_met += tokenizer.tokenize(raw)
+        #get text from each file
+        with open('la/' + file) as f:
+            raw = f.read()
+
+            #add line-tokenized text to the master list of lines
+            whole_met += tokenizer.tokenize(raw)
+
+            whole_met.replace('\t',' ')
 
 #test if there are any empty lines
 def test_for_empty(list):
@@ -29,6 +37,5 @@ def test_for_empty(list):
     else:
         return 'No empty lines! Hooray!'
 
-print(test_for_empty(whole_met))
-#print(whole_met)
-print(random.choice(whole_met))
+print(whole_met)
+'''
